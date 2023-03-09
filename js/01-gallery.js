@@ -29,12 +29,11 @@ function handleLinkClick(event) {
     `<img src="${event.target.dataset.source}" width="800" height="600">`
   );
   instanse.show();
-  galleryContainer.addEventListener("keydown", modalClose);
-}
-
-function modalClose(event) {
-  console.log(event.code);
-  if (event.code === "Escape") {
-    instanse.close();
+  function modalClose(event) {
+    console.log(event.code);
+    if (event.code === "Escape") {
+      instanse.close();
+    }
   }
+  galleryContainer.addEventListener("keydown", modalClose);
 }
