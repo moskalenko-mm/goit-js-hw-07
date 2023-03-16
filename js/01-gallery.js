@@ -26,7 +26,15 @@ galleryContainer.addEventListener("click", handleLinkClick);
 function handleLinkClick(event) {
   event.preventDefault();
   const instanse = basicLightbox.create(
-    `<img src="${event.target.dataset.source}" width="800" height="600">`
+    `<img src="${event.target.dataset.source}" width="800" height="600">`,
+    {
+      onShow: () => {
+        document.addEventListener("keydown", modalClose);
+      },
+      onClose: () => {
+        document.removeEventListener("keydown", modalClose);
+      },
+    }
   );
   instanse.show();
   function modalClose(event) {
